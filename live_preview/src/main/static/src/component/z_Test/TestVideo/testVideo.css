@@ -1,0 +1,57 @@
+.vjs-progress-control {
+    display: none !important;
+}
+
+.video-container {
+    position: relative;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.video-js {
+    background-color: #000;
+}
+
+.video-js .vjs-control-bar {
+    justify-content: space-between;
+}
+
+.video-js .vjs-control-bar .vjs-left-controls,
+.video-js .vjs-control-bar .vjs-right-controls {
+    display: flex;
+    align-items: center;
+}
+
+.video-js .vjs-control-bar .vjs-right-controls .vjs-fullscreen-control {
+    margin-left: 5px;
+}
+
+.video-js .vjs-control-bar .vjs-label {
+    color: #fff;
+    margin-right: 10px;
+}
+
+.vjs-custom-button {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: transparent;
+    border: 2px solid #fff;
+    color:black;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.video-container:hover .vjs-custom-button{
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dom_videojs{
+    display: inline-block;
+}

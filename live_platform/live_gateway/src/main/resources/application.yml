@@ -1,0 +1,61 @@
+server:
+  ssl:
+    #文件所在位置
+    key-store: classpath:ytycc.com.jks
+    key-store-password: ecq64946g9n
+    key-store-type: JKS
+realEurekaServerHost: registrationcenter
+realEurekaServerPort: 7001
+realLocalhostName: gateway
+spring:
+  data:
+    redis:
+      host: redis6.0.6
+      port: 6379
+  mvc:
+    dispatch-options-request: true
+  application:
+    name: LiveGateway
+  cloud:
+    gateway:
+      enabled: true
+      routes:
+        - id: store_route
+          uri: lb://LiveStore
+          predicates:
+            - Path=/store/**
+          filters:
+            - RewritePath=/store/(?<segment>.*), /$\{segment}
+        - id: space_route
+          uri: lb://LiveSpace
+          predicates:
+            - Path=/space/**
+          filters:
+            - RewritePath=/space/(?<segment>.*), /$\{segment}
+
+        - id: account_route
+          uri: lb://LiveAccount
+          predicates:
+            - Path=/account/**
+          filters:
+            - RewritePath=/account/(?<segment>.*), /$\{segment}
+
+        - id: webrtc_route
+          uri: ws://localhost:8078
+          predicates:
+            - Path=/yws/**
+          filters:
+            - RewritePath=/yws/(?<segment>.*), /$\{segment}
+eureka:
+  client:
+    fetch-registry: true
+    registry-fetch-interval-seconds: 10
+    service-url:
+      defaultZone: http://${realEurekaServerHost}:${realEurekaServerPort}/eureka/
+    register-with-eureka: false
+  instance:
+    instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
+    hostname: ${realLocalhostName}
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5 #续约时间
+

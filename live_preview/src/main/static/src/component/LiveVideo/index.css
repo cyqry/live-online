@@ -1,0 +1,70 @@
+.none {
+    display: none !important
+}
+
+.video-react .video-react-control-bar {
+    color: white;
+    bottom: -18%;
+    height: 40px;
+    background-color: #0d1b1f;
+    background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    transition: bottom 0.5s, transform .5s ease-out, opacity .5s ease-out, -webkit-transform .5s ease-out;
+    opacity: 0.5;
+}
+
+
+.video-react .video-react-control-bar .video-react-play-control {
+
+    position: absolute;
+    height: 17%;
+    bottom: 35px;
+    left: 3%;
+    scale: 1.5;
+}
+
+.video-react .video-react-control-bar .video-react-replay-control {
+
+    position: absolute;
+    height: 17%;
+    bottom: 35px;
+    left: 13%;
+    scale: 1.5;
+
+}
+
+.video-react .video-react-control-bar .video-react-volume-menu-button-vertical {
+
+    position: absolute;
+    height: 17%;
+    bottom: 35px;
+    right: 13%;
+    scale: 1.5;
+}
+
+.video-react .video-react-control-bar .video-react-fullscreen-control {
+    position: absolute;
+    height: 17%;
+    bottom: 35px;
+    right: 3%;
+    scale: 1.5;
+}
+
+.video-react-menu-content {
+    display: none !important
+}
+
+
+.video-react {
+    overflow: hidden;
+    background-color: black;
+}
+
+
+.video-react:hover .video-react-control-bar {
+    bottom: 0
+}
+
+.video-react-workinghover {
+    /* 一定要16:9 */
+    padding-top: 56.25% !important;
+}

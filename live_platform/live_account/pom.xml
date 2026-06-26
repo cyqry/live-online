@@ -1,0 +1,134 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ytyo</groupId>
+        <artifactId>live_platform</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+
+
+    <artifactId>live_account</artifactId>
+    <name>live_account</name>
+    <dependencies>
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.experimental</groupId>-->
+        <!--            <artifactId>spring-graal-native</artifactId>-->
+        <!--            <version>0.6.0.RELEASE</version>-->
+        <!--        </dependency>-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.ytyo</groupId>
+            <artifactId>live_common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <!--                是执行repackage而不是排除-->
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>
+                                repackage
+                            </goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!--    <build>-->
+    <!--        <finalName>-->
+    <!--            ${project.artifactId}-->
+    <!--        </finalName>-->
+    <!--        <plugins>-->
+    <!--            <plugin>-->
+    <!--                <groupId>org.springframework.boot</groupId>-->
+    <!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+    <!--            </plugin>-->
+    <!--        </plugins>-->
+    <!--    </build>-->
+
+    <!--    <repositories>-->
+    <!--        <repository>-->
+    <!--            <id>spring-milestones</id>-->
+    <!--            <name>Spring Milestones</name>-->
+    <!--            <url>https://repo.spring.io/milestone</url>-->
+    <!--        </repository>-->
+    <!--    </repositories>-->
+    <!--    <pluginRepositories>-->
+    <!--        <pluginRepository>-->
+    <!--            <id>spring-milestones</id>-->
+    <!--            <name>Spring Milestones</name>-->
+    <!--            <url>https://repo.spring.io/milestone</url>-->
+    <!--        </pluginRepository>-->
+    <!--    </pluginRepositories>-->
+
+
+    <!--    <profiles>-->
+    <!--        <profile>-->
+    <!--            <id>graal</id>-->
+    <!--            <build>-->
+    <!--                <plugins>-->
+    <!--                    <plugin>-->
+    <!--                        <groupId>org.graalvm.nativeimage</groupId>-->
+    <!--                        <artifactId>native-image-maven-plugin</artifactId>-->
+    <!--                        <version>21.2.0</version>-->
+    <!--                        <configuration>-->
+    <!--                            <buildArgs>-->
+    <!--                                -Dspring.graal.mode=initialization-only -Dspring.graal.dump-config=/tmp/computed-reflect-config.json -Dspring.graal.verbose=true -Dspring.graal.skip-logback=true &#45;&#45;initialize-at-run-time=org.springframework.data.r2dbc.connectionfactory.ConnectionFactoryUtils &#45;&#45;initialize-at-build-time=io.r2dbc.spi.IsolationLevel,io.r2dbc.spi &#45;&#45;initialize-at-build-time=io.r2dbc.spi.ConstantPool,io.r2dbc.spi.Assert,io.r2dbc.spi.ValidationDepth &#45;&#45;initialize-at-build-time=org.springframework.data.r2dbc.connectionfactory -H:+TraceClassInitialization &#45;&#45;no-fallback &#45;&#45;allow-incomplete-classpath &#45;&#45;report-unsupported-elements-at-runtime -H:+ReportExceptionStackTraces &#45;&#45;no-server &#45;&#45;initialize-at-build-time=org.reactivestreams.Publisher &#45;&#45;initialize-at-build-time=com.example.reactive.ReservationRepository &#45;&#45;initialize-at-run-time=io.netty.channel.unix.Socket &#45;&#45;initialize-at-run-time=io.netty.channel.unix.IovArray &#45;&#45;initialize-at-run-time=io.netty.channel.epoll.EpollEventLoop &#45;&#45;initialize-at-run-time=io.netty.channel.unix.Errors-->
+    <!--                            </buildArgs>-->
+    <!--                        </configuration>-->
+    <!--                        <executions>-->
+    <!--                            <execution>-->
+    <!--                                <goals>-->
+    <!--                                    <goal>native-image</goal>-->
+    <!--                                </goals>-->
+    <!--                                <phase>package</phase>-->
+    <!--                            </execution>-->
+    <!--                        </executions>-->
+    <!--                    </plugin>-->
+    <!--                    <plugin>-->
+    <!--                        <groupId>org.springframework.boot</groupId>-->
+    <!--                        <artifactId>spring-boot-maven-plugin</artifactId>-->
+    <!--                    </plugin>-->
+    <!--                </plugins>-->
+    <!--            </build>-->
+    <!--        </profile>-->
+    <!--    </profiles>-->
+
+</project>

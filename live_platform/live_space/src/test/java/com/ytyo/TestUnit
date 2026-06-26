@@ -1,0 +1,37 @@
+//package com.ytyo;
+//
+//import com.ytyo.Model.ElasticSearch.Category.SecondLevelCategory;
+//import com.ytyo.Service.InitService;
+//import org.junit.jupiter.api.Test;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.boot.test.context.SpringBootTest;
+//
+//import java.util.List;
+//import java.util.Map;
+//
+//@SpringBootTest(classes = LiveSpaceApplication.class)
+//public class TestUnit {
+//    @Autowired
+//    InitService initService;
+//
+//    @Test
+//    public void test() {
+////        initService.reInit(Map.of(
+////                "手游休闲", Map.of(
+////                        new SecondLevelCategory("三国杀", "/static/system/image?directoryPath=secondCategory&imageName=sanguosha.png", ""), List.of("国战大神", "经典手杀", "排位竞技"),
+////                        new SecondLevelCategory("王者荣耀", "/static/system/image?directoryPath=secondCategory&imageName=wzry.png", ""), List.of("大神", "新人", "带粉上车", "CG")
+////                ),
+////                "单机热游", Map.of(
+////                        new SecondLevelCategory("使命召唤系列", "/static/system/image?directoryPath=secondCategory&imageName=shimingzhaohuan.png", ""), List.of("fps手游", "职业"),
+////                        new SecondLevelCategory("永劫无间", "/static/system/image?directoryPath=secondCategory&imageName=yongjiewujian.png", ""), List.of("决赛圈", "国服大神")
+////                )
+////                , "网游竞技", Map.of(
+////                        new SecondLevelCategory("英雄联盟", "/static/system/image?directoryPath=secondCategory&imageName=lol.png", ""), List.of("绝活", "职业", "LOL手游", "CG")
+////                        , new SecondLevelCategory("原神", "/static/system/image?directoryPath=secondCategory&imageName=wcyuan.png", ""), List.of("掉宝中", "七圣召唤", "超新星")
+////                ), "娱乐天地", Map.of(
+////                        new SecondLevelCategory("音乐", "/static/system/image?directoryPath=secondCategory&imageName=music.png", ""), List.of("实力歌手", "乐器达人"),
+////                        new SecondLevelCategory("原创", "/static/system/image?directoryPath=secondCategory&imageName=yuanchuang.png", ""), List.of("熊出没", "Sintel")
+////                )
+////        ));
+//    }
+//}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/ /DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ytyo.Dao.RoomAdminMapper">
+
+    <insert id="insertRoomAdmin">
+        insert into room_admin (user_id, room_id)
+        values (#{userId}, #{roomId})
+    </insert>
+    <delete id="deleteRoomAdmin">
+        delete
+        from room_admin
+        where user_id = #{userId}
+          and room_id = #{roomId}
+    </delete>
+    <select id="selectUserIdsByRoomId" resultType="java.lang.Long">
+        select user_id
+        from room_admin
+        where room_id = #{roomId}
+    </select>
+    <select id="selectRoomIdsByUserId" resultType="com.ytyo.Model.RoomAdmin">
+        select *
+        from room_admin
+        where user_id = #{userId}
+    </select>
+    <select id="countRoomAdmin" resultType="java.lang.Integer">
+        select count(*)
+        from room_admin
+        where user_id = #{userId}
+          and room_id = #{roomId}
+    </select>
+</mapper>

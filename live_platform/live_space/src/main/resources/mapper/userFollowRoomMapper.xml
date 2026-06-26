@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/ /DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ytyo.Dao.FollowMapper">
+    <insert id="insertFollow">
+        insert into user_follow_room (user_id, room_id)
+        values (#{userId}, #{roomId})
+    </insert>
+    <delete id="deleteFollow">
+        delete
+        from user_follow_room
+        where user_id = #{userId}
+          and room_id = #{roomId}
+    </delete>
+
+    <select id="selectUserFollows" resultType="com.ytyo.Model.UserFollowRoom">
+        select *
+        from user_follow_room
+        where user_id = #{userId} LIMIT  0,#{pageSize}
+    </select>
+    <select id="selectFollowRoomUsers" resultType="com.ytyo.Model.UserFollowRoom">
+        select * user_follow_room where room_id=#{roomId}
+    </select>
+    <select id="countRoomFollow" resultType="java.lang.Long">
+        select count(*)
+        from user_follow_room
+        where room_id = #{roomId}
+    </select>
+
+    <select id="getFollowCountsByRoomIds" resultType="java.util.Map">
+        SELECT room_id, COUNT(*) AS count
+        FROM user_follow_room
+        WHERE room_id IN
+        <foreach collection="roomIds" item="roomId" open="(" separator="," close=")">
+            #{roomId}
+        </foreach>
+        GROUP BY room_id
+    </select>
+
+    <select id="countFollow" resultType="java.lang.Integer">
+        select count(*)
+        from user_follow_room
+        where user_id = #{userId}
+          and room_id = #{roomId}
+    </select>
+    <select id="selectUserFollow" resultType="com.ytyo.Model.UserFollowRoom">
+        select *
+        from user_follow_room
+        where user_id = #{userId}
+          and room_id = #{roomId}
+    </select>
+
+
+</mapper>

@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: RegistrationCenter
+  security:
+    user:
+      name: bak
+      password: 123456
+realEurekaServerHost: registrationcenter
+realLocalhostName: localhost
+realEurekaServerPort: 7001
+
+
+
+server:
+  port: 10086
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" # admin也会监控自己，这里暴露自己这个服务所有的监控端点，很详细
+eureka:
+  instance:
+    instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
+    hostname: ${realLocalhostName}
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5 #续约时间
+  client:
+    fetch-registry: true
+    registry-fetch-interval-seconds: 10
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://${realEurekaServerHost}:${realEurekaServerPort}/eureka
+
+

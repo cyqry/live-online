@@ -1,0 +1,16 @@
+127.0.0.1       eurekaone
+127.0.0.1       eurekatwo
+127.0.0.1       eurekathree
+127.0.0.1       liveeurekaregister
+127.0.0.1       mysql5.7
+127.0.0.1       account
+127.0.0.1       gateway
+127.0.0.1       store
+127.0.0.1       registrationcenter
+127.0.0.1       space
+127.0.0.1       streaming
+127.0.0.1       redis6.0.6
+127.0.0.1       elasticsearch7.17.3
+
+
+C:\Windows\System32\drivers\etc

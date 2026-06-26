@@ -1,0 +1,12 @@
+logging:
+  level:
+    root: info
+    #    设置该组的级别为info
+  file:
+    #    日志文件保存绝对路径
+    path: ./live_platform/live_gateway/log
+spring:
+  data:
+    redis:
+      host: redis6.0.6
+      port: 6379

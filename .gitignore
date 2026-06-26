@@ -1,0 +1,17 @@
+jdk
+note
+**/*.log
+**/*.gz
+**/*.jar
+**/*.exe
+.idea
+**/user/images/**
+**/target/
+**/node_modules/
+**/.env
+**/*.key
+**/*.crt
+**/*.jks
+**/*.keystore
+**/*.p12
+**/*.pfx

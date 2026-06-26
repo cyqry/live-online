@@ -1,0 +1,55 @@
+#server:
+#  ssl:
+#    #文件所在位置
+#    key-store: classpath:demo.keystore
+#    #keystore的密码
+#    key-store-password: 123456
+#    key-store-type: JKS
+#    key-alias: demo.keystore
+mybatis:
+  mapper-locations: [ 'classpath:mapper/*.xml' ]
+  type-aliases-package: com.ytyo.Model
+  configuration:
+    map-underscore-to-camel-case: true
+
+realEurekaServerHost: registrationcenter
+realEurekaServerPort: 7001
+realLocalhostName: account
+
+spring:
+  data:
+    redis:
+      host: redis6.0.6
+      port: 6379
+  application:
+    name: LiveAccount
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 1104399
+    url: jdbc:mysql://mysql5.7:3306/liveonline?serverTimezone=UTC%2B8 & characterEncoding = UTF-8
+eureka:
+  client:
+    fetch-registry: true
+    registry-fetch-interval-seconds: 10
+    service-url:
+      defaultZone: http://${realEurekaServerHost}:${realEurekaServerPort}/eureka
+    register-with-eureka: true
+  instance:
+    instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
+    hostname: ${realLocalhostName}
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5 #续约时间
+management:
+  endpoints:
+    web:
+      exposure:
+        include: [ "*" ]
+logging:
+  level:
+    root: info
+    #    设置该组的级别为info
+  file:
+    #    日志文件保存绝对路径
+    path: ./live_platform/live_account/log
+

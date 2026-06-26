@@ -1,0 +1,6 @@
+server:
+  ssl:
+    #文件所在位置
+    key-store: classpath:ytycc.com.jks
+    key-store-password: ecq64946g9n
+    key-store-type: JKS

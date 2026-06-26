@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: LiveStreaming
+realEurekaServerHost: registrationcenter
+realEurekaServerPort: 7001
+realLocalhostName: streaming
+eureka:
+  client:
+    fetch-registry: true
+    registry-fetch-interval-seconds: 10
+    service-url:
+      defaultZone: http://${realEurekaServerHost}:${realEurekaServerPort}/eureka/
+    register-with-eureka: true
+  instance:
+    instance-id: ${eureka.instance.hostname}:${spring.application.name}:${server.port}
+    hostname: ${realLocalhostName}
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 5 #续约时间
+logging:
+  level:
+    root: info
+    #    设置该组的级别为info
+  file:
+    #    日志文件保存绝对路径
+    path: ./live_platform/live_streaming/log
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["*"]

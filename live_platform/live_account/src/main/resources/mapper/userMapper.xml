@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/ /DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ytyo.Dao.UserMapper">
+
+    <select id="selectAllUser" resultType="user">
+        select *
+        from user
+    </select>
+
+
+    <select id="countByMap" parameterType="map" resultType="int">
+        SELECT COUNT(*) FROM user
+        where 1=1
+        <if test="fields!=null and fields.size()>0">
+            <foreach collection="fields" open="And (" close=")" separator="OR" index="key" item="value">
+                <if test="value != null">
+                    ${key} = #{value}
+                </if>
+            </foreach>
+        </if>
+    </select>
+    <select id="getUserByPhonePassword" resultType="user">
+        select *
+        from user
+        where phone = #{phone}
+          and password = #{password}
+    </select>
+
+    <select id="getUserByEmailPassword" resultType="user">
+        select *
+        from user
+        where email = #{email}
+          and password = #{password}
+    </select>
+    <select id="getUserById" resultType="com.ytyo.Model.User">
+        select *
+        from user
+        where id = #{id}
+    </select>
+
+    <select id="getUsersByIds" parameterType="java.util.List" resultType="com.ytyo.Model.User">
+        SELECT * FROM user
+        WHERE id IN
+        <foreach item="id" index="index" collection="list" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+    <select id="getUserPropertyById" resultType="java.lang.String">
+        select property
+        from user
+        where id = #{id}
+    </select>
+    <select id="getUserByPersonalityId" resultType="com.ytyo.Model.User">
+        select *
+        from user
+        where personality_id = #{personalityId}
+    </select>
+
+    <delete id="deleteUserById" parameterType="long">
+        delete
+        from user
+        where id = #{id}
+    </delete>
+    <insert id="insertUser" parameterType="user">
+        insert into user (nickname, gender, password, region, phone, email)
+        values (#{nickname}, #{gender}, #{password}, #{region}, #{phone}, #{email})
+    </insert>
+</mapper>

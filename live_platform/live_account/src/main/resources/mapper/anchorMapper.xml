@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/ /DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ytyo.Dao.AnchorMapper">
+    <insert id="insertAnchor">
+        insert into anchor (id, description)
+        values (#{id}, #{description})
+    </insert>
+    <delete id="deleteAnchorById">
+        delete
+        from anchor
+        where id = #{anchorId}
+    </delete>
+
+
+    <select id="selectAllAnchor" resultType="com.ytyo.Model.Anchor"></select>
+    <select id="countByMap" parameterType="map" resultType="int">
+        SELECT COUNT(*) FROM anchor
+        where 1=1
+        <if test="fields!=null and fields.size()>0">
+            <foreach collection="fields" open="And (" close=")" separator="OR" index="key" item="value">
+                <if test="value != null">
+                    ${key} = #{value}
+                </if>
+            </foreach>
+        </if>
+    </select>
+    <select id="selectAnchorById" resultType="com.ytyo.Model.Anchor">
+        select *
+        from anchor
+        where id = #{id}
+    </select>
+    <select id="selectAnchorByNickname" resultType="com.ytyo.Model.User">
+        select *
+        from anchor a
+                 join user u on a.id = u.id
+        where u.nickname like CONCAT('%', #{nickname}, '%')
+    </select>
+</mapper>

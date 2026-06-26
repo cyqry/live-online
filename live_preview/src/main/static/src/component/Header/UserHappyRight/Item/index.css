@@ -1,0 +1,15 @@
+.shake *{
+    transition: all 0.2s
+}
+
+.shake:hover div {
+    transform: translate(0%, -10%) scale(120%);
+}
+
+.shake:hover path {
+    fill: #ff630e;
+}
+
+.shake:hover span {
+    color: orange;
+}

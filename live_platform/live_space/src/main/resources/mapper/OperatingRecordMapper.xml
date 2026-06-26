@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/ /DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ytyo.Dao.OperatingRecordMapper">
+    <insert id="insertOperatingRecord">
+        insert into operating_record (user_id, operation)
+        values (#{userId}, #{operation})
+    </insert>
+    <update id="updateDisplayOperatingRecord">
+        update operating_record
+        set display=#{display}
+        where id = #{id}
+          And user_id = #{userId}
+    </update>
+    <!--    <update id="updateOperatingRecordDisplay">-->
+<!--        update operating_record-->
+<!--        set display=#{display}-->
+<!--        where user_id = #{userId}-->
+<!--          and room_id = #{roomId}-->
+<!--    </update>-->
+    <select id="selectOperatingRecord" resultType="com.ytyo.Model.Operating.OperatingRecord">
+        select *
+        from operating_record
+        where user_id = #{userId}
+    </select>
+    <select id="selectOperatingRecordByTimeQuantumUserId" resultType="com.ytyo.Model.Operating.OperatingRecord">
+        SELECT *
+        FROM operating_record
+        WHERE create_time BETWEEN #{start} AND #{end}
+          And user_id = #{userId}
+    </select>
+    <select id="selectDisplayOperatingRecord" resultType="com.ytyo.Model.Operating.OperatingRecord">
+        SELECT *
+        FROM operating_record
+        WHERE user_id = #{userId}
+          And display = 1
+    </select>
+</mapper>

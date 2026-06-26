@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: RegistrationCenter
+realEurekaServerHost: registrationcenter
+realEurekaServerPort: 7001
+server:
+  port: ${realEurekaServerPort}
+eureka:
+  server:
+    eviction-interval-timer-in-ms: 10000
+    renewal-percent-threshold: 0.85
+  client:
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://${realEurekaServerHost:registrationcenter}:${realEurekaServerPort:7001}/eureka
+

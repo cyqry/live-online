@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/ /DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ytyo.Dao.RoomInfoMapper">
+    <insert id="insertRoomInfo" useGeneratedKeys="true" keyProperty="id" >
+        insert into room_info (anchor_id)
+        values (#{anchorId})
+    </insert>
+
+    <delete id="deleteRoomInfoById">
+        delete
+        from room_info
+        where id = #{roomId}
+    </delete>
+
+    <select id="selectRoomInfoById" resultType="com.ytyo.Model.RoomDetails$RoomInfo">
+        select *
+        from room_info where id = #{roomId}
+    </select>
+
+    <select id="selectAllRoomInfo" resultType="com.ytyo.Model.RoomDetails$RoomInfo">
+        select *
+        from room_info
+    </select>
+
+
+    <select id="countByMap" parameterType="map" resultType="int">
+        SELECT COUNT(*) FROM anchor
+        where 1=1
+        <if test="fields!=null and fields.size()>0">
+            <foreach collection="fields" open="And (" close=")" separator="OR" index="key" item="value">
+                <if test="value != null">
+                    ${key} = #{value}
+                </if>
+            </foreach>
+        </if>
+    </select>
+    <select id="selectRoomInfoByAnchorId" resultType="com.ytyo.Model.RoomDetails$RoomInfo">
+        select *
+        from room_info
+        where anchor_id = #{anchorId}
+    </select>
+    <select id="selectRoomInfoByIds" parameterType="java.util.List" resultType="com.ytyo.Model.RoomDetails$RoomInfo">
+        SELECT *
+        FROM room_info
+        WHERE id IN
+        <foreach item="roomId" collection="list" open="(" separator="," close=")">
+            #{roomId}
+        </foreach>
+    </select>
+    <select id="countRoomInfo" resultType="java.lang.Integer">
+        select count(*)
+        from room_info
+        where anchor_id = #{anchorId}
+          and id = #{roomId}
+    </select>
+    <select id="countRoomIdAnchorId" resultType="java.lang.Integer">
+        select count(*)
+        from room_info
+        where id = #{roomId}
+          and anchor_id = #{anchorId}
+    </select>
+    <select id="getCanLive" resultType="java.lang.Short">
+        select can_live
+        from room_info
+        where id = #{roomId}
+    </select>
+    <select id="selectRoomInfoByAnchorIds" resultType="com.ytyo.Model.RoomDetails$RoomInfo">
+        SELECT *
+        FROM room_info
+        WHERE anchor_id IN
+        <foreach item="anchorId" collection="list" open="(" separator="," close=")">
+            #{anchorId}
+        </foreach>
+    </select>
+</mapper>
